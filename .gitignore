@@ -2,6 +2,10 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+#Videos
+*.mp4
+*.mp4.meta
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
