@@ -1,30 +1,3 @@
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UI;
-//using UnityEngine.Video;
-
-//public class VideoSwitcher : MonoBehaviour
-//{
-//    public List<VideoClip> videos;
-//    public VideoPlayer videoPlayer;
-//    private int currentVideoIndex = 0;
-
-//    private void Start()
-//    {
-//        videoPlayer.clip = videos[currentVideoIndex];
-//    }
-
-//    public void PlayVideo(int buttonIndex)
-//    {
-//        if (buttonIndex >= 0 && buttonIndex < videos.Count)
-//        {
-//            currentVideoIndex = buttonIndex;
-//            videoPlayer.clip = videos[currentVideoIndex];
-//            videoPlayer.Play();
-//        }
-//    }
-//}
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +7,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Video;
+using System.IO;
+using System.Net.NetworkInformation;
 
 [System.Serializable]
 public class VideoData
@@ -52,7 +27,6 @@ public class VideoList
 public class VideoSwitcher : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    //public TextAsset jsonFile;
     public List<TextMeshProUGUI> buttonTexts;
     private VideoList videoList;
     private int currentVideoIndex = 0;
@@ -60,12 +34,23 @@ public class VideoSwitcher : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-        TextAsset jsonFile = Resources.Load<TextAsset>("mock");
-        Debug.Log(jsonFile);
+        // Inicia o Download do arquivo json que definirá a sequência de vídeos
+        JsonDownloader jsonDownloader = GetComponent<JsonDownloader>();
+        Debug.Log(jsonDownloader);
+        jsonDownloader.onComplete += HandleJsonDownloaded;
+        jsonDownloader.StartDownload();
+    }
+
+    private void HandleJsonDownloaded(TextAsset jsonFile)
+    {
+        // Após realizar o download, inicia a execução de vídeos
+        Debug.Log("Conteúdo do JSON: " + jsonFile.text);
+        StartVideos(jsonFile);
+    }
+
+    private void StartVideos(TextAsset jsonFile)
+    {
         string jsonString = jsonFile.text;
-        
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         videoList = JsonUtility.FromJson<VideoList>(jsonString);
 
         if (videoList.videos.Length > 0)
@@ -79,7 +64,8 @@ public class VideoSwitcher : MonoBehaviour
     }
 
     public void PlayVideo(int buttonIndex)
-    {   
+    {
+        // Define o que fazer quando um botão é apertado, a depender dos estados do jogo
         if (is_in_final)
         {
             if (buttonIndex == 0)
@@ -121,46 +107,4 @@ public class VideoSwitcher : MonoBehaviour
 }
 
 
-//public class VideoSwitcher : MonoBehaviour
-//{
-//    public List<string> videoUrls; // Lista de URLs dos vídeos
-//    public VideoPlayer videoPlayer;
-//    private int currentVideoIndex = 0;
-
-//    private void Start()
-//    {
-//        TextAsset jsonFile = Resources.Load<TextAsset>("videos");
-//        string jsonString = jsonFile.text;
-//        videoList = JsonUtility.FromJson<VideoList>(jsonString);
-//        Debug.Log("AAAAAAAAAAAAAA");
-//        StartCoroutine(PlayFromURL(videoUrls[currentVideoIndex]));
-//        Debug.Log("AAAAAAAAAAAAAA");
-//    }
-
-//    public void PlayVideo(int buttonIndex)
-//    {
-//        if (buttonIndex >= 0 && buttonIndex < videoUrls.Count)
-//        {
-//            currentVideoIndex = buttonIndex;
-//            StartCoroutine(PlayFromURL(videoUrls[currentVideoIndex]));
-//        }
-//    }
-
-//    IEnumerator PlayFromURL(string url)
-//    {
-//        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
-//        {
-//            yield return webRequest.SendWebRequest();
-//            if (webRequest.isNetworkError || webRequest.isHttpError)
-//            {
-//                Debug.LogError(webRequest.error);
-//            }
-//            else
-//            {
-//                videoPlayer.url = webRequest.url;
-//                videoPlayer.Play();
-//            }
-//        }
-//    }
-//}
 
