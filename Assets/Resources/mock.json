@@ -1,6 +1,6 @@
 {"videos": [
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/360_inicio.mp4",
+      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/inicio.mp4",
       "text": 0,
       "is_final": false
    },   
@@ -37,17 +37,17 @@
   ],
   "videosEnd":[
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/360_pergunta1.mp4",
+      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/pergunta1.mp4",
       "text": "Cachoeira",
       "is_final": false
    },
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/360_pergunta2.mp4",
+      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/pergunta2.mp4",
       "text": "Cachoeira",
       "is_final": false
    },
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/360_fim.mp4",
+      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/fim.mp4",
       "text": "Cachoeira",
       "is_final": true
    }
