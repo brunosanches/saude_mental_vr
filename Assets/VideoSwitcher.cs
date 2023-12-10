@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 using UnityEngine.Video;
 using System.IO;
 using System.Net.NetworkInformation;
+using UnityEngine.UIElements;
 
 [System.Serializable]
 public class VideoData
@@ -24,6 +25,8 @@ public class VideoList
     public VideoData[] videos;
 }
 
+
+
 public class VideoSwitcher : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
@@ -35,10 +38,30 @@ public class VideoSwitcher : MonoBehaviour
     private void Start()
     {
         // Inicia o Download do arquivo json que definirá a sequência de vídeos
-        JsonDownloader jsonDownloader = GetComponent<JsonDownloader>();
+       JsonDownloader jsonDownloader = gameObject.AddComponent<JsonDownloader>();
+
+
+        Debug.Log("JSON downloader: ");
         Debug.Log(jsonDownloader);
         jsonDownloader.onComplete += HandleJsonDownloaded;
+
         jsonDownloader.StartDownload();
+
+    }
+
+    public int GetVideoListSize()
+    {
+        return videoList.videos.Length;
+    }
+
+    public int getCurrentVideoIndex()
+    {
+        return currentVideoIndex;
+    }
+
+    public void setCurrentVideoIndex(int videoIndex)
+    {
+        currentVideoIndex = videoIndex;
     }
 
     private void HandleJsonDownloaded(TextAsset jsonFile)
@@ -59,12 +82,20 @@ public class VideoSwitcher : MonoBehaviour
             videoPlayer.url = videoList.videos[currentVideoIndex].url;
             buttonTexts[0].text = videoList.videos[2 * currentVideoIndex + 1].text;
             buttonTexts[1].text = videoList.videos[2 * currentVideoIndex + 2].text;
-            videoPlayer.Play();
+
+
+           videoPlayer.Play();
+          
         }
     }
 
     public void PlayVideo(int buttonIndex)
     {
+        Debug.Log("Button index:");
+        Debug.Log(buttonIndex);
+        Debug.Log(buttonIndex >= 0);
+        Debug.Log(videoList.videos.Length);
+
         // Define o que fazer quando um botão é apertado, a depender dos estados do jogo
         if (is_in_final)
         {
@@ -83,8 +114,8 @@ public class VideoSwitcher : MonoBehaviour
             }
         }
         else if (buttonIndex >= 0 && buttonIndex < videoList.videos.Length)
-        {   
-            Debug.Log(buttonIndex);
+        {
+
             currentVideoIndex = 2*currentVideoIndex + buttonIndex + 1;
             videoPlayer.url = videoList.videos[currentVideoIndex].url;
 

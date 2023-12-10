@@ -20,16 +20,16 @@ public class VRInput : MonoBehaviour
             //Ray ray = new Ray(vrCamera.transform.position, vrCamera.transform.forward);
             RaycastHit hit;
 
-            //Debug.Log("Cliquei");
+            Debug.Log("Cliquei trigger");
             
             if (Physics.Raycast(interactor.Ray, out hit, maxRayDistance, layerMask))
             {
-                //Debug.Log("Cliquei1");
                 Button button = hit.collider.GetComponent<Button>();
-                //Debug.Log(button);
+                Debug.Log("Ray no button:");
+                Debug.Log(button);
                 if (!button.IsUnityNull())
                 {
-                    //Debug.Log("Cliquei2");
+                    Debug.Log("Cliquei no button");
                     button.onClick.Invoke();
                 }
             }
