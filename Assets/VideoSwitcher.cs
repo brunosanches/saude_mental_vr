@@ -19,19 +19,30 @@ public class VideoData
 }
 
 [System.Serializable]
+public class FeedbackVideoData
+{
+    public string url;
+    public string option1;
+    public string option2;
+    public bool is_final;
+}
+
+[System.Serializable]
 public class VideoList
 {
     public VideoData[] videos;
-    public VideoData[] videosEnd;
+    public FeedbackVideoData[] feedbackVideos;
 }
 
 public class VideoSwitcher : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public List<TextMeshProUGUI> buttonTexts;
+    public List<ButtonController> buttonControllers;
     private VideoList videoList;
     private int currentVideoIndex = 0;
     private bool is_in_final = false;
+    private bool is_in_feedback = false;
 
     private void Start()
     {
@@ -70,7 +81,7 @@ public class VideoSwitcher : MonoBehaviour
         // Define o que fazer quando um botão é apertado, a depender dos estados do jogo
         if (is_in_final)
         {
-            if (buttonIndex == 0)
+            if (buttonIndex == 0 || is_in_feedback)
             {
                 currentVideoIndex = 0;
                 videoPlayer.url = videoList.videos[currentVideoIndex].url;
@@ -79,10 +90,36 @@ public class VideoSwitcher : MonoBehaviour
                 videoPlayer.Play();
                 is_in_final = false;
             }
+            else if (!is_in_feedback)
+            {
+                is_in_feedback = true;
+                is_in_final = false;
+                currentVideoIndex = 0;
+                videoPlayer.url = videoList.feedbackVideos[currentVideoIndex].url;
+                buttonTexts[0].text = videoList.feedbackVideos[currentVideoIndex].option1;
+                buttonTexts[1].text = videoList.feedbackVideos[currentVideoIndex].option2;
+                videoPlayer.Play();
+
+            }
+        }
+        else if (is_in_feedback)
+        {
+            currentVideoIndex++;
+            videoPlayer.url = videoList.feedbackVideos[currentVideoIndex].url;
+            
+            if (videoList.feedbackVideos[currentVideoIndex].is_final)
+            {
+                is_in_final = true;
+                buttonControllers[0].enabled = false;
+                //buttonTexts[0].text = "Voltar ao início";
+                buttonTexts[1].text = "Voltar ao início";
+            }
             else
             {
-                is_in_final = false;
+                buttonTexts[0].text = videoList.feedbackVideos[currentVideoIndex].option1;
+                buttonTexts[1].text = videoList.feedbackVideos[currentVideoIndex].option2;
             }
+            videoPlayer.Play();
         }
         else if (buttonIndex >= 0 && buttonIndex < videoList.videos.Length)
         {   
