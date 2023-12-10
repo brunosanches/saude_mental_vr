@@ -442,6 +442,9 @@ MonoBehaviour:
   buttonTexts:
   - {fileID: 549186999}
   - {fileID: 1785568824}
+  buttonControllers:
+  - {fileID: 523671061}
+  - {fileID: 201592787}
 --- !u!1 &263961566
 GameObject:
   m_ObjectHideFlags: 0

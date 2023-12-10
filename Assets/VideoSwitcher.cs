@@ -110,8 +110,8 @@ public class VideoSwitcher : MonoBehaviour
             if (videoList.feedbackVideos[currentVideoIndex].is_final)
             {
                 is_in_final = true;
-                buttonControllers[0].enabled = false;
-                //buttonTexts[0].text = "Voltar ao início";
+                //buttonControllers[0].enabled = false;
+                buttonTexts[0].text = "Voltar ao início";
                 buttonTexts[1].text = "Voltar ao início";
             }
             else
