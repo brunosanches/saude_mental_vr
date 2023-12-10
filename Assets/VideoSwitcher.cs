@@ -22,6 +22,7 @@ public class VideoData
 public class VideoList
 {
     public VideoData[] videos;
+    public VideoData[] videosEnd;
 }
 
 public class VideoSwitcher : MonoBehaviour
