@@ -14,6 +14,8 @@ public class ButtonController : MonoBehaviour
 
     public void PlayVideo()
     {
+        Debug.Log(videoSwitcher);
+        Debug.Log(videoIndex);
         videoSwitcher.PlayVideo(videoIndex);
     }
 }

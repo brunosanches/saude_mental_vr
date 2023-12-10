@@ -35,7 +35,8 @@ public class VideoSwitcher : MonoBehaviour
     private void Start()
     {
         // Inicia o Download do arquivo json que definirá a sequência de vídeos
-        JsonDownloader jsonDownloader = GetComponent<JsonDownloader>();
+        Transform childTransform = transform.Find("JsonDownloader");
+        JsonDownloader jsonDownloader = childTransform.GetComponent<JsonDownloader>();
         Debug.Log(jsonDownloader);
         jsonDownloader.onComplete += HandleJsonDownloaded;
         jsonDownloader.StartDownload();
