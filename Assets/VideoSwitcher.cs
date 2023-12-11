@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 using UnityEngine.Video;
 using System.IO;
 using System.Net.NetworkInformation;
+using UnityEngine.UIElements;
 
 [System.Serializable]
 public class VideoData
@@ -34,11 +35,14 @@ public class VideoList
     public FeedbackVideoData[] feedbackVideos;
 }
 
+
+
 public class VideoSwitcher : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public List<TextMeshProUGUI> buttonTexts;
     public List<ButtonController> buttonControllers;
+    public GameObject buttons_canvas;
     private VideoList videoList;
     private int currentVideoIndex = 0;
     private bool is_in_final = false;
@@ -51,7 +55,24 @@ public class VideoSwitcher : MonoBehaviour
         JsonDownloader jsonDownloader = childTransform.GetComponent<JsonDownloader>();
         Debug.Log(jsonDownloader);
         jsonDownloader.onComplete += HandleJsonDownloaded;
+
         jsonDownloader.StartDownload();
+
+    }
+
+    public VideoList GetVideoList()
+    {
+        return videoList;
+    }
+
+    public int getCurrentVideoIndex()
+    {
+        return currentVideoIndex;
+    }
+
+    public void setCurrentVideoIndex(int videoIndex)
+    {
+        currentVideoIndex = videoIndex;
     }
 
     private void HandleJsonDownloaded(TextAsset jsonFile)
@@ -72,12 +93,32 @@ public class VideoSwitcher : MonoBehaviour
             videoPlayer.url = videoList.videos[currentVideoIndex].url;
             buttonTexts[0].text = videoList.videos[2 * currentVideoIndex + 1].text;
             buttonTexts[1].text = videoList.videos[2 * currentVideoIndex + 2].text;
+
+
             videoPlayer.Play();
+
+
+
         }
+    }
+
+    public void setIsInFinal(bool isInFinal)
+    {
+        is_in_final = isInFinal;
+    }
+
+    public void setIsInFeedback(bool isInFeedback)
+    {
+        is_in_feedback = isInFeedback;
     }
 
     public void PlayVideo(int buttonIndex)
     {
+        Debug.Log("Button index:");
+        Debug.Log(buttonIndex);
+        Debug.Log(buttonIndex >= 0);
+        Debug.Log(videoList.videos.Length);
+
         // Define o que fazer quando um botão é apertado, a depender dos estados do jogo
         if (is_in_final)
         {
@@ -111,8 +152,9 @@ public class VideoSwitcher : MonoBehaviour
             {
                 is_in_final = true;
                 //buttonControllers[0].enabled = false;
-                buttonTexts[0].text = "Voltar ao início";
-                buttonTexts[1].text = "Voltar ao início";
+                //buttonTexts[0].text = "Voltar ao início";
+                //buttonTexts[1].text = "Voltar ao início";
+                buttons_canvas.SetActive(false);
             }
             else
             {
@@ -122,8 +164,8 @@ public class VideoSwitcher : MonoBehaviour
             videoPlayer.Play();
         }
         else if (buttonIndex >= 0 && buttonIndex < videoList.videos.Length)
-        {   
-            Debug.Log(buttonIndex);
+        {
+
             currentVideoIndex = 2*currentVideoIndex + buttonIndex + 1;
             videoPlayer.url = videoList.videos[currentVideoIndex].url;
 

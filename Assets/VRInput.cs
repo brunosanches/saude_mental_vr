@@ -11,28 +11,48 @@ public class VRInput : MonoBehaviour
     public EventSystem eventSystem;
     public float maxRayDistance = 100.0f;
     public LayerMask layerMask; // Set this to the layer your button is on
-    public RayInteractor interactor;
+    public RayInteractor interactor1;
+    public RayInteractor interactor2;
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) // Replace "Fire1" with your VR controller input
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) // Replace "Fire1" with your VR controller input
         {
             //Ray ray = new Ray(vrCamera.transform.position, vrCamera.transform.forward);
-            RaycastHit hit;
+            RaycastHit hit1;
+            RaycastHit hit2;
 
-            //Debug.Log("Cliquei");
-            
-            if (Physics.Raycast(interactor.Ray, out hit, maxRayDistance, layerMask))
+            Debug.Log("Cliquei trigger");
+            Debug.Log(Physics.Raycast(interactor1.Ray, out hit1, maxRayDistance, layerMask));
+            if (Physics.Raycast(interactor1.Ray, out hit1, maxRayDistance, layerMask))
             {
-                //Debug.Log("Cliquei1");
-                Button button = hit.collider.GetComponent<Button>();
-                //Debug.Log(button);
+                Button button = hit1.collider.GetComponent<Button>();
+                Debug.Log("Ray no button:");
+                Debug.Log(button);
                 if (!button.IsUnityNull())
                 {
-                    //Debug.Log("Cliquei2");
+                    Debug.Log("Cliquei no button");
                     button.onClick.Invoke();
                 }
             }
+            else
+            {
+                Debug.Log(Physics.Raycast(interactor2.Ray, out hit2, maxRayDistance, layerMask));
+                if (Physics.Raycast(interactor2.Ray, out hit2, maxRayDistance, layerMask))
+                {
+                    Button button = hit2.collider.GetComponent<Button>();
+                    Debug.Log("Ray no button:");
+                    Debug.Log(button);
+                    if (!button.IsUnityNull())
+                    {
+                        Debug.Log("Cliquei no button");
+                        button.onClick.Invoke();
+                    }
+                }
+            }
+
+           
+
         }
     }
 }
