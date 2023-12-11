@@ -5,33 +5,143 @@
       "is_final": false
    },   
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/video_drone.mp4",
-      "text": "Drone",
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/entrada_triste.mp4",
+      "text": "Começar",
       "is_final": false
    },   
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/video_luta.mp4",
-      "text": "Luta",
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/entrada_triste.mp4",
+      "text": "Vamos lá!",
       "is_final": false 
    },
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/video_londres.mp4",
-      "text": "Ponte",
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/escutar.mp4",
+      "text": "Conversar",
+      "is_final":false 
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/ignorado.mp4",
+      "text": "Ignorar",
+      "is_final": false
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/escutar.mp4",
+      "text": "Conversar",
+      "is_final":false
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/ignorado.mp4",
+      "text": "Ignorar",
+      "is_final": false
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_positivo.mp4",
+      "text": "Ouvir",
       "is_final":true 
    },
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/video_comercio.mp4",
-      "text": "Comércio",
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_mediano.mp4",
+      "text": "Aconselhar",
       "is_final": true
    },
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/video_cachoeira1.mp4",
-      "text": "Caverna",
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/escutar.mp4",
+      "text": "Conversar",
+      "is_final": false
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_ruim.mp4",
+      "text": "Ignorar",
+      "is_final":true 
+   },   
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_positivo.mp4",
+      "text": "Ouvir",
+      "is_final":true 
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_mediano.mp4",
+      "text": "Aconselhar",
       "is_final": true
    },
    {
-      "url": "https://github.com/brunosanches/saude_mental_vr/raw/main/Assets/360/video_examples/video_cachoeira2.mp4",
-      "text": "Cachoeira",
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/escutar.mp4",
+      "text": "Conversar",
+      "is_final": false
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_ruim.mp4",
+      "text": "Ignorar",
+      "is_final":true 
+   },   
+   {
+      "url": "",
+      "text": "Ouvir",
+      "is_final":true 
+   },
+   { 
+      "url": "",
+      "text": "Aconselhar",
+      "is_final": true
+   },
+   {
+      "url": "",
+      "text": "Ignorar",
+      "is_final":true 
+   },
+   {
+      "url": "",
+      "text": "Conversar",
+      "is_final": true
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_positivo.mp4",
+      "text": "Ouvir",
+      "is_final":true 
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_mediano.mp4",
+      "text": "Aconselhar",
+      "is_final": true
+   },
+   {
+      "url": "",
+      "text": "Ouvir",
+      "is_final":true 
+   },
+   {
+      "url": "",
+      "text": "Aconselhar",
+      "is_final": true
+   },
+   {
+      "url": "",
+      "text": "Ignorar",
+      "is_final":true 
+   },
+   {
+      "url": "",
+      "text": "Conversar",
+      "is_final": true
+   },
+   {
+      "url": "",
+      "text": "Conversar",
+      "is_final": true
+   },
+   {
+      "url": "",
+      "text": "Conversar",
+      "is_final": true
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_positivo.mp4",
+      "text": "Ouvir",
+      "is_final":true 
+   },
+   {
+      "url": "https://github.com/jose-melo/videos_saude_ment/raw/main/feedback_mediano.mp4",
+      "text": "Aconselhar",
       "is_final": true
    }
   ],
