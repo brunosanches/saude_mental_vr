@@ -58,6 +58,8 @@ public class VideoSwitcher : MonoBehaviour
 
         jsonDownloader.StartDownload();
 
+        videoPlayer.isLooping = false;
+
     }
 
     public VideoList GetVideoList()

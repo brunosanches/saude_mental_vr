@@ -6,7 +6,7 @@ public class JsonDownloader : MonoBehaviour
 {
     // URL do arquivo JSON a ser baixado
     public string jsonUrl = "https://raw.githubusercontent.com/brunosanches/saude_mental_vr/main/Assets/Resources/mock.json";
-    //public string jsonUrl = "C:\\Users\\bruno\\My project (3)\\Assets\\Resources\\mock_2.json";
+    //public string jsonUrl = "C:\\Users\\bruno\\saude_mental_vr\\Assets\\Resources\\mock.json";
 
     // Callback para lidar com o TextAsset baixado
     public System.Action<TextAsset> onComplete;

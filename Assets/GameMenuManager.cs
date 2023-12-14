@@ -8,7 +8,6 @@ using UnityEngine.EventSystems; // Required for Event System
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Video;
-using Oculus.Voice.Windows;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -57,6 +56,7 @@ public class GameMenuManager : MonoBehaviour
         VideoList videoList = videoSwitcher.GetVideoList();
         Debug.Log("Reset current video index");
         videoSwitcher.setCurrentVideoIndex(0);
+        videoSwitcher.setIsInFeedback(false);
         videoSwitcher.buttonTexts[0].text = videoList.videos[1].text;
         videoSwitcher.buttonTexts[1].text = videoList.videos[2].text;
         videoSwitcher.videoPlayer.url = videoList.videos[0].url;
